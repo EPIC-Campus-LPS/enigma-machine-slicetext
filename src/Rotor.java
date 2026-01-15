@@ -13,10 +13,10 @@ public class Rotor {
 
     public Rotor() {
         spaghetti = new int[26];
-        for(int i = 0; i < spaghetti.length; i++) {
+        for(int i = 0; i < spaghetti.length - 1; i++) {
             int rand;
             do {
-                rand = (int)(Math.random() * 27);
+                rand = (int)(Math.random() * 26);
             } while(spaghettiContains(rand));
 
             spaghetti[i] = rand;
@@ -27,6 +27,17 @@ public class Rotor {
         input += rotation;
         input %= 26;
         return spaghetti[input];
+    }
+
+    public int decode(int input) {
+        input += rotation;
+        input %= 26;
+        for(int i = 0; i < spaghetti.length; i++) {
+            if (spaghetti[i] == input) {
+                return i;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 
     public void rotate() {

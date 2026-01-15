@@ -11,8 +11,17 @@ class EnigmaMachineTest {
         HashMap<Integer, Integer> cables = new HashMap<>();
         EnigmaMachine enigmaMachine = new EnigmaMachine(cables);
         int result = enigmaMachine.encode(1);
-        System.out.println(result);
+        enigmaMachine.resetRotation();
         result = enigmaMachine.encode(result);
         assertEquals(1, result);
+    }
+
+    @Test
+    void unique() {
+        HashMap<Integer, Integer> cables = new HashMap<>();
+        EnigmaMachine enigmaMachine = new EnigmaMachine(cables);
+        for(int i = 0; i < 25; i++) {
+            System.out.println(enigmaMachine.encode(i));
+        }
     }
 }

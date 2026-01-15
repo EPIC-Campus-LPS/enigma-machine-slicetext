@@ -22,4 +22,10 @@ class RotorTest {
         assertEquals(oldCode, newCode);
     }
 
+    @Test
+    public void decode() {
+        Rotor rotor = new Rotor();
+        assertEquals(1, rotor.encode(rotor.decode(1)));
+    }
+
 }
