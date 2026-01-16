@@ -27,6 +27,7 @@ public class EnigmaMachine {
         input = rotor1.encode(input);
         input = rotor2.encode(input);
         input = rotor3.encode(input);
+        // FIXME the reflector? (or maybe 3rd rotor) somehow messes up a letter rarely
         input = reflector.encode(input);
         input = rotor3.decode(input);
         input = rotor2.decode(input);

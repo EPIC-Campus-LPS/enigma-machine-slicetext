@@ -26,7 +26,7 @@ public class Reflector {
             return spaghetti.get(input);
         } else if(spaghetti.containsValue(input)) {
             for (Map.Entry<Integer, Integer> e : spaghetti.entrySet()) {
-                if (e.getValue() == input) {
+                if (e.getValue().equals(input)) {
                     return e.getKey();
                 }
             }

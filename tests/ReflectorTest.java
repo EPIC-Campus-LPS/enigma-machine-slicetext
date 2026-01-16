@@ -8,7 +8,9 @@ class ReflectorTest {
     void encode() {
         Reflector r = new Reflector();
         for(int i = 0; i < 26; i++) {
-            assertEquals(i, r.encode(r.encode(i)));
+            int result = r.encode(r.encode(i));
+
+            assertEquals(i, result);
         }
     }
 }
