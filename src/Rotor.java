@@ -26,15 +26,17 @@ public class Rotor {
     public int encode(int input) {
         input += rotation;
         input %= 26;
-        return spaghetti[input];
+        return spaghetti[input] + rotation;
     }
 
     public int decode(int input) {
-        input += rotation;
-        input %= 26;
+        input -= rotation;
+        if(input < 0) {
+            input = input + 26;
+        }
         for(int i = 0; i < spaghetti.length; i++) {
             if (spaghetti[i] == input) {
-                return i;
+                return (i - rotation >= 0)? i - rotation : (i - rotation) + 26;
             }
         }
         throw new IllegalArgumentException();
