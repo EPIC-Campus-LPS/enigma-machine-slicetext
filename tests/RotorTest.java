@@ -8,7 +8,7 @@ class RotorTest {
         Rotor rotor = new Rotor();
 
         for(int i = 0; i < rotor.spaghetti.length; i++) {
-            assertEquals(rotor.spaghetti[i], rotor.encode(i));
+            assertEquals(rotor.spaghetti[i], rotor.encode(i, false));
         }
     }
 
@@ -16,16 +16,16 @@ class RotorTest {
     public void rotate() {
         Rotor rotor = new Rotor();
 
-        int oldCode = rotor.encode(1);
+        int oldCode = rotor.encode(1, false);
         rotor.rotate();
-        int newCode = rotor.encode(0);
+        int newCode = rotor.encode(0, false);
         assertEquals(oldCode, newCode);
     }
 
     @Test
     public void decode() {
         Rotor rotor = new Rotor();
-        assertEquals(1, rotor.encode(rotor.decode(1)));
+        assertEquals(1, rotor.encode(rotor.decode(1, false), false));
     }
 
 }

@@ -14,24 +14,24 @@ public class EnigmaMachine {
     }
 
     public int encode(int input) {
-        rotor1.rotate();
         firstRotations++;
-        if(firstRotations % 26 == 0) {
-            rotor2.rotate();
-        }
+        rotor1.rotate();
         if(firstRotations % 676 == 0) {
             rotor3.rotate();
         }
+        if(firstRotations % 26 == 0) {
+            rotor2.rotate();
+        }
 
         input = plugboard.encode(input);
-        input = rotor1.encode(input);
-        input = rotor2.encode(input);
-        input = rotor3.encode(input);
+        input = rotor1.encode(input, false);
+        input = rotor2.encode(input, false);
+        input = rotor3.encode(input, true);
         // FIXME the reflector? (or maybe 3rd rotor) somehow messes up a letter rarely
         input = reflector.encode(input);
-        input = rotor3.decode(input);
-        input = rotor2.decode(input);
-        input = rotor1.decode(input);
+        input = rotor3.decode(input, true);
+        input = rotor2.decode(input, false);
+        input = rotor1.decode(input, false);
         input = plugboard.encode(input);
         return input;
     }

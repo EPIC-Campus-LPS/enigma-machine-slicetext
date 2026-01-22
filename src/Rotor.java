@@ -23,14 +23,20 @@ public class Rotor {
         }
     }
 
-    public int encode(int input) {
+    public int encode(int input, boolean reflector) {
         input += rotation;
         input %= 26;
-        return spaghetti[input] + rotation;
+        if(!reflector) {
+            return spaghetti[input] + rotation;
+        } else {
+            return spaghetti[input];
+        }
     }
 
-    public int decode(int input) {
-        input -= rotation;
+    public int decode(int input, boolean reflector) {
+        if(!reflector) {
+            input -= rotation;
+        }
         if(input < 0) {
             input = input + 26;
         }
